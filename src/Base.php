@@ -45,6 +45,8 @@ use ProfilePress\Core\ContentProtection\SettingsPage as ContentProtectionSetting
 use ProfilePress\Core\RegisterActivation\CreateDBTables;
 use ProfilePress\Core\Widgets\Init as WidgetsInit;
 use ProfilePressVendor\PAnD;
+use ProfilePress\Core\Integrations\CleanTalk\CleanTalkService;
+
 
 define('PROFILEPRESS_SRC', plugin_dir_path(PROFILEPRESS_SYSTEM_FILE_PATH) . 'src/');
 define('PPRESS_ADMIN_SETTINGS_PAGE_FOLDER', PROFILEPRESS_SRC . 'Admin/SettingsPages/');
@@ -177,6 +179,7 @@ class Base extends DBTables
         LoginRedirect::get_instance();
 
         Integrations\TutorLMS\Init::get_instance();
+        Integrations\CleanTalk\CleanTalkService::getInstance();
 
         LicenseUpgrader::get_instance();
 
