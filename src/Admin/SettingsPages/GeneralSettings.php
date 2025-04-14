@@ -611,6 +611,28 @@ class GeneralSettings extends AbstractSettingsPage
             );
         }
 
+        if (class_exists('\ProfilePress\Core\Integrations\CleanTalk\CleanTalkService')) {
+            $args['cleantalk_settings'] = apply_filters('ppress_cleantalk_settings_page', [
+                    'tab_title'                     => esc_html__('CleanTalk Anti-Spam', 'wp-user-avatar'),
+                    'section_title'                 => esc_html__('CleanTalk Settings', 'wp-user-avatar'),
+                    'dashicon'                      => 'dashicons-email-alt',
+                    'cleantalk_enabled' => [
+                        'type'           => 'checkbox',
+                        'value'          => 'yes',
+                        'label'          => esc_html__('Enable Integration', 'wp-user-avatar'),
+                        'checkbox_label' => esc_html__('Check to enable', 'wp-user-avatar'),
+                        'description'    => sprintf(__('If enabled all the registrations will be checked via CleanTalk service check')),
+                    ],
+                    'cleantalk_access_key'           => [
+                        'type'        => 'text',
+                        'value'       => '',
+                        'label'       => esc_html__('CleanTalk access key', 'wp-user-avatar'),
+                        'description' => __('Access key can be obtained from the CleanTalk dashboard', 'wp-user-avatar'),
+                    ],
+                ]
+            );
+        }
+
         $this->settingsPageInstance->main_content(apply_filters('ppress_settings_page_args', $args));
         $this->settingsPageInstance->build_sidebar_tab_style();
     }
