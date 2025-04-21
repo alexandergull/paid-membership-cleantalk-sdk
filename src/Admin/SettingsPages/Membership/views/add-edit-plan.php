@@ -61,7 +61,7 @@ $plan_details = [
         'id'          => 'price',
         'type'        => 'price',
         'label'       => esc_html__('Price', 'wp-user-avatar') . sprintf(' (%s)', ppress_get_currency_symbol()),
-        'description' => esc_html__('The price of this membership plan. Enter 0 to make this plan free.', 'wp-user-avatar')
+        'description' => esc_html__('The price of this membership plan. Enter 0.00 to make this plan free.', 'wp-user-avatar')
     ]
 ];
 

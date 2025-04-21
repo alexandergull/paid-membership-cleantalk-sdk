@@ -10,7 +10,6 @@ use ProfilePress\Core\Membership\Models\Order\OrderEntity;
 use ProfilePress\Core\Membership\Models\Order\OrderFactory;
 use ProfilePress\Core\Membership\Models\Plan\PlanEntity;
 use ProfilePress\Core\Membership\Models\Plan\PlanFactory;
-use ProfilePress\Core\Membership\Models\Subscription\SubscriptionBillingFrequency;
 use ProfilePress\Core\Membership\Models\Subscription\SubscriptionEntity;
 use ProfilePress\Core\Membership\Models\Subscription\SubscriptionFactory;
 use ProfilePress\Core\Membership\PaymentMethods\AbstractPaymentMethod;
@@ -438,7 +437,7 @@ class Stripe extends AbstractPaymentMethod
             // Before we cancel, lets make sure this subscription exists at Stripe.
             $stripeSubObj = APIClass::stripeClient()->subscriptions->retrieve($subscription->profile_id);
 
-            if ('canceled' === $stripeSubObj->status) return false;
+            if ('canceled' === $stripeSubObj->status || empty($subscription->profile_id)) return false;
 
             if (false === $cancel_immediately) {
 
@@ -452,20 +451,6 @@ class Stripe extends AbstractPaymentMethod
 
             } else {
                 APIClass::stripeClient()->subscriptions->cancel($subscription->profile_id);
-            }
-
-            // We must now loop through and cancel all unpaid invoice to ensure that additional payment attempts are not made.
-            $invoices = APIClass::stripeClient()->invoices->all(['subscription' => $subscription->profile_id])->toArray();
-
-            if (isset($invoices['data'])) {
-
-                foreach ($invoices['data'] as $invoice) {
-
-                    // Skip paid invoices.
-                    if ($invoice['paid'] === true) continue;
-
-                    APIClass::stripeClient()->invoices->voidInvoice($invoice['id']);
-                }
             }
 
         } catch (\Exception $e) {

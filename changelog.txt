@@ -1,5 +1,13 @@
 ﻿== Changelog ==
 
+= Paid Membership, Ecommerce & User Registration 4.15.23 =
+* Added ppress_subscription_after_expired_reminder_email_enabled filter
+* Added ppress_membership_subscription_expired_email_enabled filter
+* Added a filter to modify user roles in search filter.
+* Fixed bug where content protection excerpt generation can fail
+* Fixed bug where restricted template didn’t display global restricted message.
+* Fixed bug where marking a checkout field as not required didn’t work.
+
 = 4.15.22 =
 * Added a filter for specifying payment method based on plan ID.
 * Added ppress_subscription_buffer_seconds filter.
