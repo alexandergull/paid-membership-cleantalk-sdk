@@ -213,13 +213,13 @@ class PostContent
 
             $noaccess_action_message_style = ppress_var($access_condition, 'noaccess_action_message_style', 'none');
 
-            $content = $this->get_restricted_message($noaccess_message_type, $custom_message, $noaccess_action_message_style);
+            $content = $this->get_restricted_message($content, $noaccess_message_type, $custom_message, $noaccess_action_message_style);
         }
 
         return $content;
     }
 
-    public function get_restricted_message($noaccess_message_type = 'global', $custom_message = '', $message_style = 'none')
+    public function get_restricted_message($post_content, $noaccess_message_type = 'global', $custom_message = '', $message_style = 'none')
     {
         $message = '';
 
@@ -234,13 +234,13 @@ class PostContent
                 $message = $this->style_paywall_message(wpautop($custom_message), $message_style);
                 break;
             case 'post_excerpt':
-                $message = $this->get_post_excerpt();
+                $message = $this->get_post_excerpt($post_content);
                 break;
             case 'post_excerpt_global':
-                $message = $this->get_post_excerpt() . $this->style_paywall_message($this->parse_message($global_message), $message_style);
+                $message = $this->get_post_excerpt($post_content) . $this->style_paywall_message($this->parse_message($global_message), $message_style);
                 break;
             case 'post_excerpt_custom':
-                $message = $this->get_post_excerpt() . $this->style_paywall_message($this->parse_message($custom_message), $message_style);
+                $message = $this->get_post_excerpt($post_content) . $this->style_paywall_message($this->parse_message($custom_message), $message_style);
                 break;
         }
 
@@ -265,7 +265,7 @@ class PostContent
         return $message;
     }
 
-    public function get_post_excerpt()
+    public function get_post_excerpt($post_content)
     {
         global $post;
 
@@ -285,7 +285,15 @@ class PostContent
             $the_excerpt = $post->post_content;
         }
 
-        return apply_filters('ppress_content_protection_excerpt', self::trim_content($the_excerpt, $length, $more), $post, $length);
+        $the_excerpt = self::trim_content($the_excerpt, $length, $more);
+
+        // if after trimming and stuff above, an empty content/string is return, re-trim again,
+        //this time with actual post content from _the_content filter
+        if (apply_filters('ppress_content_protection_use_filter_post_content', false, $post) || empty($the_excerpt)) {
+            $the_excerpt = self::trim_content($post_content, $length, $more);
+        }
+
+        return apply_filters('ppress_content_protection_excerpt', $the_excerpt, $post, $length);
     }
 
     public static function trim_content($the_excerpt = '', $length = 100, $more = false)

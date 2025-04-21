@@ -75,6 +75,8 @@ class Selector
      * @param string $sSelector
      *
      * @return bool
+     *
+     * @internal since V8.8.0
      */
     public static function isValid($sSelector)
     {
@@ -82,7 +84,7 @@ class Selector
     }
     /**
      * @param string $sSelector
-     * @param bool $bCalculateSpecificity
+     * @param bool $bCalculateSpecificity @deprecated since V8.8.0, will be removed in V9.0.0
      */
     public function __construct($sSelector, $bCalculateSpecificity = \false)
     {
@@ -110,6 +112,8 @@ class Selector
     }
     /**
      * @return string
+     *
+     * @deprecated in V8.8.0, will be removed in V9.0.0. Use `render` instead.
      */
     public function __toString()
     {

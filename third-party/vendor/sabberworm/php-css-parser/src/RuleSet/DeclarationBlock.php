@@ -46,6 +46,8 @@ class DeclarationBlock extends RuleSet
      *
      * @throws UnexpectedTokenException
      * @throws UnexpectedEOFException
+     *
+     * @internal since V8.8.0
      */
     public static function parse(ParserState $oParserState, $oList = null)
     {
@@ -375,7 +377,7 @@ class DeclarationBlock extends RuleSet
             return;
         }
         $oRule = $aRules['background'];
-        $aBgProperties = ['background-color' => ['transparent'], 'background-image' => ['none'], 'background-repeat' => ['repeat'], 'background-attachment' => ['scroll'], 'background-position' => [new Size(0, '%', null, \false, $this->iLineNo), new Size(0, '%', null, \false, $this->iLineNo)]];
+        $aBgProperties = ['background-color' => ['transparent'], 'background-image' => ['none'], 'background-repeat' => ['repeat'], 'background-attachment' => ['scroll'], 'background-position' => [new Size(0, '%', \false, $this->iLineNo), new Size(0, '%', \false, $this->iLineNo)]];
         $mRuleValue = $oRule->getValue();
         $aValues = [];
         if (!$mRuleValue instanceof RuleValueList) {
@@ -701,6 +703,8 @@ class DeclarationBlock extends RuleSet
      * @return string
      *
      * @throws OutputException
+     *
+     * @deprecated in V8.8.0, will be removed in V9.0.0. Use `render` instead.
      */
     public function __toString()
     {

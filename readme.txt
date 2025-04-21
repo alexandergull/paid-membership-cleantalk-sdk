@@ -4,8 +4,8 @@ Donate link: https://profilepress.com/pricing/
 Tags: membership, ecommerce, user registration, user profile, memberships
 Requires at least: 5.3
 Requires PHP: 7.4
-Tested up to: 6.7
-Stable tag: 4.15.22
+Tested up to: 6.8
+Stable tag: 4.15.23
 License: GPLv2 or later
 
 Setup paid membership, accept payment, sell subscription & digital product, paywall, create login & registration form, user profile & member directory
@@ -182,6 +182,14 @@ Any file type can be sold using ProfilePress ecommerce and membership plugin, in
 11. Content Protection
 
 == Changelog ==
+
+= Paid Membership, Ecommerce & User Registration 4.15.23 =
+* Added ppress_subscription_after_expired_reminder_email_enabled filter
+* Added ppress_membership_subscription_expired_email_enabled filter
+* Added a filter to modify user roles in search filter.
+* Fixed bug where content protection excerpt generation can fail
+* Fixed bug where restricted template didn’t display global restricted message.
+* Fixed bug where marking a checkout field as not required didn’t work.
 
 = Paid Membership, Ecommerce & User Registration 4.15.22 =
 * Added a filter for specifying payment method based on plan ID.

@@ -113,7 +113,7 @@ class FieldsShortcodeCallback
         $valid_atts = array();
 
         foreach ($atts as $key => $value) {
-            if ( ! in_array($key, $invalid_atts) && strpos($key, 'on') !== 0 && is_string($key) && is_string($value)) {
+            if ( ! in_array($key, $invalid_atts) && strpos($key, 'on') !== 0 && is_string($key) && (is_string($value) || ppress_is_boolean($value))) {
                 $valid_atts[esc_attr($key)] = esc_attr($value);
             }
         }
