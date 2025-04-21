@@ -88,7 +88,7 @@ function ppress_settings_by_key($key = '', $default = false, $is_empty = false)
         return isset($data[$key]) && ( ! empty($data[$key]) || ppress_is_boolean($data[$key])) ? $data[$key] : $default;
     }
 
-    return isset($data[$key]) ? $data[$key] : $default;
+    return $data[$key] ?? $default;
 }
 
 function ppress_get_setting($key = '', $default = false, $is_empty = false)

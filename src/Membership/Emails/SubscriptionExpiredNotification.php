@@ -22,6 +22,8 @@ class SubscriptionExpiredNotification extends AbstractMembershipEmail
      */
     public function dispatch_email($subscription)
     {
+        if ( ! apply_filters('ppress_membership_subscription_expired_email_enabled', true, $subscription)) return;
+
         if (ppress_get_setting(self::ID . '_email_enabled', 'on') !== 'on') return;
 
         $placeholders_values = $this->get_subscription_placeholders_values($subscription);

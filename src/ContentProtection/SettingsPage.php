@@ -135,12 +135,12 @@ class SettingsPage extends AbstractSettingsPage
         foreach ($data as $key => $value) {
 
             if (is_array($data[$key])) {
-                $sanitized_data[$key] = self::sanitize_data($data[$key]);
+                $sanitized_data[$key] = self::sanitize_data($value);
             } else {
                 if ($key == 'noaccess_action_message_custom') {
-                    $sanitized_data[$key] = wp_kses_post($data[$key]);
+                    $sanitized_data[$key] = wp_kses_post($value);
                 } else {
-                    $sanitized_data[$key] = sanitize_textarea_field($data[$key]);
+                    $sanitized_data[$key] = sanitize_textarea_field($value);
                 }
             }
         }

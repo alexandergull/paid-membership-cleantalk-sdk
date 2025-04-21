@@ -67,6 +67,8 @@ class Size extends PrimitiveValue
      *
      * @throws UnexpectedEOFException
      * @throws UnexpectedTokenException
+     *
+     * @internal since V8.8.0
      */
     public static function parse(ParserState $oParserState, $bIsColorComponent = \false)
     {
@@ -184,6 +186,8 @@ class Size extends PrimitiveValue
     }
     /**
      * @return string
+     *
+     * @deprecated in V8.8.0, will be removed in V9.0.0. Use `render` instead.
      */
     public function __toString()
     {

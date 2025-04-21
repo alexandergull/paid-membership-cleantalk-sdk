@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the ProfilePress plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: ProfilePress 4.15.22\n"
+"Project-Id-Version: ProfilePress 4.15.23\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-user-avatar\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-03-07T11:42:53+00:00\n"
+"POT-Creation-Date: 2025-04-16T12:36:11+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: wp-user-avatar\n"
@@ -1607,8 +1607,8 @@ msgstr ""
 
 #: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:220
 #: src/Admin/SettingsPages/EmailSettings/EmailSettingsPage.php:262
-#: src/Membership/Emails/SubscriptionAfterExpiredNotification.php:47
-#: src/Membership/Emails/SubscriptionExpiredNotification.php:30
+#: src/Membership/Emails/SubscriptionAfterExpiredNotification.php:49
+#: src/Membership/Emails/SubscriptionExpiredNotification.php:32
 msgid "Your subscription has expired."
 msgstr ""
 
@@ -2618,6 +2618,7 @@ msgstr ""
 #: src/Admin/SettingsPages/GeneralSettings.php:532
 #: src/ContentProtection/ElementorRestriction.php:253
 #: src/ContentProtection/Frontend/PostContent.php:228
+#: src/ContentProtection/Frontend/restricted-template.php:20
 #: src/RegisterActivation/Base.php:135
 msgid "You are unauthorized to view this page."
 msgstr ""
@@ -4588,7 +4589,7 @@ msgid "Select the user role to associate with this membership plan. Users that s
 msgstr ""
 
 #: src/Admin/SettingsPages/Membership/views/add-edit-plan.php:64
-msgid "The price of this membership plan. Enter 0 to make this plan free."
+msgid "The price of this membership plan. Enter 0.00 to make this plan free."
 msgstr ""
 
 #: src/Admin/SettingsPages/Membership/views/add-edit-plan.php:80
@@ -5654,7 +5655,7 @@ msgstr ""
 
 #: src/Classes/Miscellaneous.php:105
 #: src/Membership/Models/Order/OrderMode.php:13
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:255
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:254
 msgid "Live"
 msgstr ""
 
@@ -16200,7 +16201,7 @@ msgid "Order changed from %s to %s by %s"
 msgstr ""
 
 #: src/Membership/Models/Order/OrderMode.php:14
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:255
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:254
 msgid "Test"
 msgstr ""
 
@@ -16337,17 +16338,17 @@ msgid "These account details will be displayed on the order confirmation page."
 msgstr ""
 
 #: src/Membership/PaymentMethods/BankTransfer/BankTransfer.php:58
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:318
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:317
 msgid "Remove Billing Address"
 msgstr ""
 
 #: src/Membership/PaymentMethods/BankTransfer/BankTransfer.php:60
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:320
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:319
 msgid "Check to remove billing address fields from the checkout page."
 msgstr ""
 
 #: src/Membership/PaymentMethods/BankTransfer/BankTransfer.php:61
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:321
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:320
 msgid "If you do not want the billing address fields displayed on the checkout page, use this setting to remove it."
 msgstr ""
 
@@ -16420,144 +16421,144 @@ msgstr ""
 msgid "Setup Fee"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:34
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:33
 msgid "Pay with your credit card via Stripe"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:37
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:36
 msgid "Accept various payment methods including Credit Card, Apple & Google Pay via Stripe."
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:40
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:39
 msgid "NOTE: The free version of ProfilePress includes an additional 2%% fee for processing payments. Remove the fee by %supgrading to premium%s."
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:83
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:82
 msgid "Stripe Connect Error:"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:211
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:210
 msgid "test"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:211
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:210
 msgid "live"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:221
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:220
 msgid "Your Stripe account is connected in %1$s mode. %2$sDisconnect this account%3$s."
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:236
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:235
 msgid "Connection Status"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:243
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:242
 msgid "Connect now to start accepting payments instantly. This includes an additional 2%% payment processing fee. Remove the fee by %supgrading to premium%s."
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:261
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:260
 msgid "Webhook Setup"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:264
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:263
 msgid "In order for Stripe to function well, ensure the webhook endpoint %1$s is present in the %2$sStripe webhooks settings%3$s. Learn more from our %4$swebhook documentation%3$s"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:273
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:272
 msgid "test mode"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:273
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:272
 msgid "live mode"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:275
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:274
 msgid "Webhook Secret"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:278
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:277
 msgid "Retrieve your %3$s \"Signing secret\" from your %1$sStripe webhook settings%2$s. Select the endpoint then click \"Reveal\"."
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:289
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:288
 msgid "Statement Descriptor"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:292
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:291
 msgid "The text that appears on your customer's bank or credit card statements. Choose something they will recognise to help prevent disputes, typically your business name. Must be limited to 22 characters, no special characters %1$s<%2$s, %1$s>%2$s, %1$s'%2$s, or %1$s\"%2$s."
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:298
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:297
 msgid "Payment Collection Method"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:301
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:300
 msgid "Stripe Credit Card Field (On-site)"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:302
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:301
 msgid "Stripe Payment Page (Off-site)"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:304
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:303
 msgid "Select how payment information will be collected. Could be right on your site with Stripe card fields or off-site through Stripe hosted payment page."
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:308
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:307
 msgid "Enable Stripe Tax"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:310
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:309
 msgid "Check to automatically calculate and charge taxes via Stripe Tax."
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:312
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:311
 msgid "This is only available when using Stripe Payment Page (Off-site) and have %sStripe Tax%s enabled in your Stripe account."
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:325
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:324
 msgid "Restrict Stripe Assets"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:327
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:326
 msgid "Only load Stripe.com hosted assets on pages that specifically utilize Stripe functionality."
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:329
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:328
 msgid "Stripe advises that their Javascript library be loaded on every page to take advantage of their advanced fraud detection rules. If you are not concerned with this, enable this setting to only load the Javascript when necessary. %sLearn more%s"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:348
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:347
 msgid "Please enter a name for the credit card."
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:475
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:460
 msgid "Attempted cancellation but was unable. Message was \"%s\"."
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:588
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:573
 #: src/templates/checkout/credit-card-fields.php:5
 msgid "Name on card"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:646
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:631
 msgid "Manage Subscription"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:677
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:662
 msgid "Unable to generate Stripe customer portal URL. Please try again"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:1011
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:996
 msgid "Refund request is pending"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:1014
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:999
 msgid "Refund request failed"
 msgstr ""
 
-#: src/Membership/PaymentMethods/Stripe/Stripe.php:1017
+#: src/Membership/PaymentMethods/Stripe/Stripe.php:1002
 msgid "Refund request failed. Status: %s"
 msgstr ""
 

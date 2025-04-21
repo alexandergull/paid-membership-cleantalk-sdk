@@ -464,12 +464,12 @@ abstract class AbstractMemberDirectoryTheme extends AbstractTheme
 
                             if ($field_key == 'ppress_user_role') {
                                 $this->filter_structure__select_field(
-                                    $query_params,
-                                    $field_key,
-                                    esc_html__('User Role', 'wp-user-avatar'),
-                                    ppress_wp_roles_key_value(false),
-                                    false
-                                );
+	                                $query_params,
+	                                $field_key,
+	                                esc_html__('User Role', 'wp-user-avatar'),
+	                                apply_filters('ppress_md_user_roles_filter', ppress_wp_roles_key_value(false), $this->form_id),
+                                	false
+	                            );
                             }
 
                             if (is_array($custom_field)) {
