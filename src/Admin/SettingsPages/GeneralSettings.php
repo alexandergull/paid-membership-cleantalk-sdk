@@ -612,6 +612,17 @@ class GeneralSettings extends AbstractSettingsPage
         }
 
         if (class_exists('\ProfilePress\Core\Integrations\CleanTalk\CleanTalkService')) {
+            $service = \ProfilePress\Core\Integrations\CleanTalk\CleanTalkService::getInstance();
+            $href_my = sprintf(
+                '<a href="%s">%s</a>',
+                $service->sdk::getCleanTalkUTMLink($service::$vendor_name, 'my'),
+                'CleanTalk'
+            );
+            $href_register = sprintf(
+                '<a href="%s">%s</a>',
+                $service->sdk::getCleanTalkUTMLink($service::$vendor_name, 'register'),
+                'CleanTalk Dashboard'
+            );
             $args['cleantalk_settings'] = apply_filters('ppress_cleantalk_settings_page', [
                     'tab_title'                     => esc_html__('CleanTalk Anti-Spam', 'wp-user-avatar'),
                     'section_title'                 => esc_html__('CleanTalk Settings', 'wp-user-avatar'),
@@ -621,13 +632,19 @@ class GeneralSettings extends AbstractSettingsPage
                         'value'          => 'yes',
                         'label'          => esc_html__('Enable Integration', 'wp-user-avatar'),
                         'checkbox_label' => esc_html__('Check to enable', 'wp-user-avatar'),
-                        'description'    => sprintf(__('If enabled all the registrations will be checked via CleanTalk service check')),
+                        'description'    => sprintf(
+                                __('If enabled all the registrations will be checked via %s service check'),
+                                $href_my
+                        ),
                     ],
                     'cleantalk_access_key'           => [
                         'type'        => 'text',
                         'value'       => '',
                         'label'       => esc_html__('CleanTalk access key', 'wp-user-avatar'),
-                        'description' => __('Access key can be obtained from the CleanTalk dashboard', 'wp-user-avatar'),
+                        'description'    => sprintf(
+                            __('Access key can be obtained from the %s'),
+                            $href_register
+                        ),
                     ],
                 ]
             );

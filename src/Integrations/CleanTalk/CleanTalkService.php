@@ -15,7 +15,8 @@ class CleanTalkService
      * @var CleanTalkSDK
      */
     public $sdk;
-    private static $vendor_name = 'profile_press_paid_membership_' . PPRESS_VERSION_NUMBER;
+    public static $vendor_name = 'paidmembership';
+    public static $vendor_version = PPRESS_VERSION_NUMBER;
 
     /**
      * CleanTalkService Singleton constructor.
@@ -23,7 +24,7 @@ class CleanTalkService
      */
     public function init()
     {
-        $this->sdk = new CleanTalkSDK(static::$vendor_name, null, false);
+        $this->sdk = new CleanTalkSDK(static::$vendor_name, static::$vendor_version, null, false);
         add_filter('ppress_cleantalk_settings_page', array($this, 'hookDrawSettingsPage'));
         add_action('ppress_before_registration', array($this, 'hookPPressBeforeRegistration'), 10, 2);
         add_action('wp_cspa_validate_data', array($this, 'hookSaveSettingsPage'), 10, 1);
@@ -69,7 +70,7 @@ class CleanTalkService
             return;
         }
 
-        $custom_cleantalk_message = static::getInstance()->sdk->gatherMessage($_POST, static::getKeyFromPPressStorage());
+        $custom_cleantalk_message = static::getInstance()->sdk->getDefaultHTTPMessage($_POST, static::getKeyFromPPressStorage());
 
         $nickname = !empty($user_data['nickname']) ? $user_data['nickname'] : '';
         if (!empty($user_data['first_name']) && is_string($user_data['first_name'])) {
@@ -80,11 +81,13 @@ class CleanTalkService
         }
         $custom_cleantalk_message->sender_nickname = trim($nickname);
 
-        $custom_cleantalk_message->sender_message = isset($user_data['display_name'])
+        $custom_cleantalk_message->message = isset($user_data['display_name'])
             ? $user_data['display_name']
             : '';
 
-        $response = static::getInstance()->sdk->getCleanTalkResponse($_POST, $custom_cleantalk_message);
+        $custom_cleantalk_message->registration_flag = true;
+
+        $response = static::getInstance()->sdk->getCleanTalkResponse($custom_cleantalk_message);
 
         if ($response->allow == 0) {
             wp_send_json(static::preparePPFormResponse($response->comment));
@@ -102,15 +105,31 @@ class CleanTalkService
         $enabled = static::isCleanTalkEnabled();
         $key_is_valid = static::isCleanTalkKeyValid();
         $current_key = static::getKeyFromPPressStorage();
-        $description = __('CleanTalk access key is valid, ready to protect.');
-        if (!$key_is_valid) {
-            $description = __('CleanTalk access key is invalid');
-        }
+        $description = __('CleanTalk Access Key is valid, ready to protect.', 'wp-user-avatar');
+        $get_key_chunk = sprintf(
+            __('The Access Key can be obtained in the %s', 'wp-user-avatar'),
+            sprintf(
+                '<a href="%s" target="_blank">%s</a>',
+                static::getInstance()->sdk::getCleanTalkUTMLink(
+                    static::getInstance()::$vendor_name,
+                    'my'
+                ),
+                __('CleanTalk Dashboard', 'wp-user-avatar'),
+            )
+        );
         if (!$enabled) {
-            $description = __('CleanTalk Integration is disabled.');
+            $description = sprintf(
+                __('CleanTalk integration is disabled. %s', 'wp-user-avatar'),
+                !$key_is_valid
+                    ? __('Access Key is invalid or expired. ', 'wp-user-avatar') . $get_key_chunk
+                    : ''
+            );
         }
         if (empty($current_key)) {
-            $description = __('CleanTalk access key is empty.');
+            $description = sprintf(
+                __('CleanTalk Access Key is empty. %s', 'wp-user-avatar'),
+                $get_key_chunk
+            );
         }
         $args['cleantalk_access_key']['description'] = $description;
         return $args;
